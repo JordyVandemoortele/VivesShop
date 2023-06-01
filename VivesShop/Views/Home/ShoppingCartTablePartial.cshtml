@@ -5,12 +5,13 @@
     <thead>
         <tr>
             <th class="w-65">Product</th>
-            <th class="w-25">Prijs</th>
+            <th class="w-25">Eenheidsprijs</th>
+            <th class="w-25">Aantal</th>
             <th class="w-10"></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (Product product in @Model.ShoppingCart)
+        @foreach (ProductCart product in @Model.ShoppingCart)
         {
             <partial name="ShoppingCartRowPartial" model="product" />
         }
@@ -19,7 +20,18 @@
         <tr>
             <td class="w-65">Totaal:</td>
             <td class="w-25">€@Model.TotalPrice</td>
-            <td class="w-10"><a asp-action="Order" asp-route-id="@Model.Id" class="btn btn-secondary">Kassa</a></td>
+            <td class="w-25"></td>
+            <td class="w-10">
+                <button type="button"
+                        class="btn btn-secondary"
+                        data-bs-toggle="modal"
+                        data-bs-target="#proceedModal"
+                        data-id="@Model"
+                        data-role="proceed">
+                    Betalen
+                </button>
+            </td>
         </tr>
     </tfoot>
 </table>
+

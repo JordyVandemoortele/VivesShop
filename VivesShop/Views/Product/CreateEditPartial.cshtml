@@ -14,11 +14,11 @@
 </div>
 <div class="mb-3">
     <label asp-for="Price" class="form-label"></label>
-    <input asp-for="Price" class="form-control" type="number"/>
+    <input asp-for="Price" class="form-control" type="number" step='0.01' value='0.00' placeholder='0.00' />
     <span asp-validation-for="Price"></span>
 </div>
 <div class="mb-3">
-    <label asp-for="CategoryId" class="form-label">Choose an author:</label>
+    <label asp-for="CategoryId" class="form-label">Categorie:</label>
     <select asp-for="CategoryId" class="form-control">
         @foreach (var category in categories)
         {

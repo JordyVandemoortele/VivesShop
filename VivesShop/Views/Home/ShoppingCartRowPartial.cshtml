@@ -1,9 +1,11 @@
-﻿@model Product
+﻿@model ProductCart
 
 <tr>
     <td>@Model.Name</td>
     <td>€@Model.Price</td>
+    <td>@Model.NumberAdded</td>
     <td>
         <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">-</a>
     </td>
 </tr>
+

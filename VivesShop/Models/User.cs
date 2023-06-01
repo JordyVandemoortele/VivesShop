@@ -9,7 +9,7 @@ namespace VivesShop.Models
         public required string FirstName { get; set; }
         [Required]
         public required string LastName { get; set; }
-        public List<Product> ShoppingCart { get; set; } = new List<Product>();
+        public List<ProductCart> ShoppingCart { get; set; } = new List<ProductCart>();
         public decimal TotalPrice { get; set; }
 
         public void GetTotal()
@@ -17,7 +17,7 @@ namespace VivesShop.Models
             TotalPrice = 0;
             foreach (var item in ShoppingCart)
             {
-                TotalPrice += item.Price;
+                TotalPrice += item.Price*item.NumberAdded;
             }
         }
     }

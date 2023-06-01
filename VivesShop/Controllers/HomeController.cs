@@ -45,7 +45,17 @@ namespace VivesShop.Controllers
             {
                 return RedirectToAction("Index");
             }
-            _UserInfo.ShoppingCart.Add(product);
+            ProductCart productToAdd = new ProductCart{Id = product.Id, Name = product.Name, Price = product.Price};
+            ProductCart? existingProduct = _UserInfo.ShoppingCart.FirstOrDefault(p => p.Id == productToAdd.Id);
+            if (existingProduct == null)
+            {
+                productToAdd.NumberAdded = 1;
+                _UserInfo.ShoppingCart.Add(productToAdd);
+            }
+            else
+            {
+                existingProduct.NumberAdded++;
+            }
             _UserInfo.GetTotal();
             return RedirectToAction("Index");
         }
@@ -57,7 +67,11 @@ namespace VivesShop.Controllers
             {
                 return RedirectToAction("Index");
             }
-            _UserInfo.ShoppingCart.Remove(product);
+            product.NumberAdded--;
+            if(product.NumberAdded == 0)
+            {
+                _UserInfo.ShoppingCart.Remove(product);
+            }
             _UserInfo.GetTotal();
             return RedirectToAction("Index");
         }
