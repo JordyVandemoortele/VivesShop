@@ -1,0 +1,23 @@
+﻿@model IList<ProductCategory>
+@{
+    ViewBag.Title = "Category Management";
+}
+
+<h1>@ViewBag.Title</h1>
+
+<a asp-action="Create" class="btn btn-primary">Create new Category</a>
+
+<table class="table table-secondary table-striped">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var category in Model)
+    {
+        <partial name="CategoryRowPartial" model="category" />
+    }
+    </tbody>
+</table>

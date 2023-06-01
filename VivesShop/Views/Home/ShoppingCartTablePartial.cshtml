@@ -1,0 +1,25 @@
+﻿@model User
+
+<h2>Winkelwagen</h2>
+<table class="table table-secondary table-striped">
+    <thead>
+        <tr>
+            <th class="w-65">Product</th>
+            <th class="w-25">Prijs</th>
+            <th class="w-10"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Product product in @Model.ShoppingCart)
+        {
+            <partial name="ShoppingCartRowPartial" model="product" />
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td class="w-65">Totaal:</td>
+            <td class="w-25">€@Model.TotalPrice</td>
+            <td class="w-10"><a asp-action="Order" asp-route-id="@Model.Id" class="btn btn-secondary">Kassa</a></td>
+        </tr>
+    </tfoot>
+</table>

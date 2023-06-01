@@ -1,0 +1,20 @@
+﻿@model Product
+
+<tr>
+    <td>@Model.Name</td>
+    <td>@Model.Price</td>
+    <td>
+        @if (Model.Category is not null)
+        {
+            @: @Model.Category.Name
+        }
+        else
+        {
+            @: No category assigned
+        }
+    </td>
+    <td>
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-success">Edit</a>
+        <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Delete</a>
+    </td>
+</tr>

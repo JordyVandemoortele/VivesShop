@@ -1,0 +1,28 @@
+﻿@model Product
+
+
+@{
+    var categories = (IList<ProductCategory>)ViewBag.People;
+}
+
+<div asp-validation-summary="ModelOnly"></div>
+
+<div class="mb-3">
+    <label asp-for="Name" class="form-label"></label>
+    <input asp-for="Name" class="form-control" />
+    <span asp-validation-for="Name"></span>
+</div>
+<div class="mb-3">
+    <label asp-for="Price" class="form-label"></label>
+    <input asp-for="Price" class="form-control" type="number"/>
+    <span asp-validation-for="Price"></span>
+</div>
+<div class="mb-3">
+    <label asp-for="CategoryId" class="form-label">Choose an author:</label>
+    <select asp-for="CategoryId" class="form-control">
+        @foreach (var category in categories)
+        {
+            <option value="@category.Id">@category.Name</option>
+        }
+    </select>
+</div>
